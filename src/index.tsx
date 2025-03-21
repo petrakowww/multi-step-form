@@ -1,12 +1,23 @@
-import { createRoot } from "react-dom/client";
-import { App } from "./app";
+import { App } from './app';
+import { BrowserRouter } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
+import React from 'react';
 
-const root = document.getElementById("root");
+const root = document.getElementById('root');
 
 if (!root) {
-    throw new Error("Root not found for React");
+    throw new Error('Root not found for React');
 }
 
-const container = createRoot(root);
+/**
+ * В данном пет-проекте нет необходимости в маршрутизации (react-router-dom), однако было добавлено для полноты
+ *
+ */
 
-container.render(<App />);
+ReactDOM.createRoot(root).render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </React.StrictMode>,
+);
