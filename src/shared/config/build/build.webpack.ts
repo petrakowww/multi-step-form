@@ -1,5 +1,4 @@
 import "webpack-dev-server";
-import path from "path";
 import { Configuration } from "webpack";
 import { buildDevServer } from "./build.dev-server";
 import { buildLoaders } from "./build.loaders";
