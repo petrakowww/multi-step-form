@@ -11,8 +11,11 @@
         "esModuleInterop": true,
         "baseUrl": "./",
         "paths": {
-            "@styles/*": ["src/shared/styles/*"]
-        }
+            "@styles/*": ["src/shared/styles/*"],
+            "@config/*": ["./src/shared/config/*"],
+            "@/*": ["src"]
+        },
+        "plugins": [{ "name": "typescript-plugin-css-modules" }]
     },
     "ts-node": {
         "compilerOptions": {

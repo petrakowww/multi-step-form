@@ -1,80 +1,32 @@
+/**
+ * alias @ не будет работать до инициализации config, поэтому указываем полный путь до сборки
+ * 
+ * Можно установить дополнительный npm пакет для решения данной проблемы module-alias
+ */
+
+import { buildWebpack } from "./src/shared/config/build/build.webpack";
+import {
+    BuildEnvVariables,
+    BuildPaths,
+} from "./src/shared/config/build/types/build.options";
 import path from "path";
-import "webpack-dev-server";
-import { ProgressPlugin, Configuration } from "webpack";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { Port } from "webpack-dev-server";
 
-type Mode = "production" | "development";
-
-interface EnvVariables {
-    mode: Mode;
-    port: Port;
-}
-
-export default (env: EnvVariables) => {
-    const isDev = env.mode === "development";
-    const isProd = env.mode === "production";
-
-    const config: Configuration = {
-        mode: env.mode ?? "development",
-        entry: path.resolve(__dirname, "src/index.tsx"),
-        output: {
-            filename: "[name].[contenthash].js",
-            path: path.resolve(__dirname, "dist"),
-            clean: true,
+export default (env: BuildEnvVariables) => {
+    const paths: BuildPaths = {
+        output: path.resolve(__dirname, "dist"),
+        entry: path.resolve(__dirname, "src", "index.tsx"),
+        html: path.resolve(__dirname, "public", "index.html"),
+        aliases: {
+            "@styles": path.resolve(__dirname, "src/shared/styles"),
+            "@config": path.resolve(__dirname, "src/shared/config"),
+            "@": path.resolve(__dirname, "src/"),
         },
-        plugins: [
-            new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, "public/index.html"),
-            }),
-            isDev && new ProgressPlugin(),
-            isProd && new MiniCssExtractPlugin({
-                filename: "css/[name].[contenthash:8].css",
-                chunkFilename: "css/[name].[contenthash:8].css",
-            }),
-        ].filter(Boolean),
-        module: {
-            rules: [
-                {
-                    test: /\.s[ac]ss$/i,
-                    use: [
-                        // Creates `style` nodes from JS strings
-                        isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-                        // Translates CSS into CommonJS
-                        "css-loader",
-                        // Compiles Sass to CSS
-                        "sass-loader",
-                    ],
-                },
-                {
-                    test: /\.css$/i,
-                    use: [
-                        isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-                        "css-loader",
-                    ],
-                },
-                {
-                    test: /\.tsx?$/,
-                    use: "ts-loader",
-                    exclude: /node_modules/,
-                },
-            ],
-        },
-        resolve: {
-            alias: {
-                "@styles": path.resolve(__dirname, "src/shared/styles"),
-            },
-            extensions: [".tsx", ".ts", ".js"],
-        },
-        devtool: isDev && "inline-source-map",
-        devServer: isDev
-            ? {
-                  port: env.port ?? 3000,
-                  open: true,
-              }
-            : undefined,
     };
 
+    const config = buildWebpack({
+        port: env.port ?? 3000,
+        mode: env.mode ?? "development",
+        paths,
+    });
     return config;
 };

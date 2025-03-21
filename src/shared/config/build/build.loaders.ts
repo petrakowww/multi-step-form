@@ -1,0 +1,70 @@
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { ModuleOptions } from "webpack";
+import { BuildOptions } from "./types/build.options";
+import { isDevMode } from "./utils/build.type";
+
+export const buildLoaders = (options: BuildOptions): ModuleOptions["rules"] => {
+    const isDev = isDevMode(options.mode);
+
+    const cssLoaderWithModules = {
+        loader: "css-loader",
+        options: {
+            modules: {
+                localIdentName: isDev
+                    ? "[path][name]__[local]"
+                    : "[hash:base64:8]",
+            },
+        },
+    };
+
+    const cssLoaderWithoutModules = {
+        loader: "css-loader",
+        options: {
+            modules: false,
+        },
+    };
+
+    const scssModulesLoader = {
+        test: /\.module\.s[ac]ss$/i, // для файлов с .module.scss
+        use: [
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            cssLoaderWithModules,
+            "sass-loader",
+        ],
+    };
+
+    const scssLoader = {
+        test: /\.s[ac]ss$/i,
+        exclude: /\.module\.s[ac]ss$/i,
+        use: [
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            cssLoaderWithoutModules,
+            "sass-loader",
+        ],
+    };
+
+    const cssModulesLoader = {
+        test: /\.module\.css$/i, // для файлов .module.css
+        use: [
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            cssLoaderWithModules,
+        ],
+    };
+
+    const cssLoader = {
+        test: /\.css$/i,
+        exclude: /\.module\.css$/i,
+        use: [
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            cssLoaderWithoutModules,
+        ],
+    };
+
+    const tsLoader = {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+    };
+
+    return [scssModulesLoader, scssLoader, cssModulesLoader, cssLoader, tsLoader];
+};
