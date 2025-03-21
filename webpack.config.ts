@@ -1,6 +1,6 @@
 /**
  * alias @ не будет работать до инициализации config, поэтому указываем полный путь до сборки
- * 
+ *
  * Можно установить дополнительный npm пакет для решения данной проблемы module-alias
  */
 
@@ -21,6 +21,7 @@ export default (env: BuildEnvVariables) => {
             "@config": path.resolve(__dirname, "src/shared/config"),
             "@": path.resolve(__dirname, "src/"),
         },
+        public: path.resolve(__dirname, "public"),
     };
 
     const config = buildWebpack({

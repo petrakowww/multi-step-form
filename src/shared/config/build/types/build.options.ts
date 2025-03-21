@@ -7,6 +7,7 @@ export interface BuildPaths {
     html: string;
     output: string;
     aliases?: Record<string, string>;
+    public: string;
 }
 
 export interface BuildOptions {

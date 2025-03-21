@@ -2,9 +2,40 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { ModuleOptions } from "webpack";
 import { BuildOptions } from "./types/build.options";
 import { isDevMode } from "./utils/build.type";
+import ReactRefreshTypeScript from "react-refresh-typescript";
 
 export const buildLoaders = (options: BuildOptions): ModuleOptions["rules"] => {
     const isDev = isDevMode(options.mode);
+
+    const assetLoader = {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+    };
+
+    const fontLoader = {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+    };
+
+    const svgLoader = {
+        test: /\.svg$/,
+        use: [
+            {
+                loader: "@svgr/webpack",
+                options: {
+                    icon: true,
+                    svgoConfig: {
+                        plugins: {
+                            name: "convertColors",
+                            params: {
+                                currentColor: true,
+                            },
+                        },
+                    },
+                },
+            },
+        ],
+    };
 
     const cssLoaderWithModules = {
         loader: "css-loader",
@@ -61,10 +92,31 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions["rules"] => {
     };
 
     const tsLoader = {
-        test: /\.tsx?$/,
-        use: "ts-loader",
+        test: /\.[jt]sx?$/,
         exclude: /node_modules/,
+        use: [
+            {
+                loader: "ts-loader",
+                options: {
+                    getCustomTransformers: () => ({
+                        before: [isDev && ReactRefreshTypeScript()].filter(
+                            Boolean
+                        ),
+                    }),
+                    transpileOnly: isDev,
+                },
+            },
+        ],
     };
 
-    return [scssModulesLoader, scssLoader, cssModulesLoader, cssLoader, tsLoader];
+    return [
+        assetLoader,
+        svgLoader,
+        fontLoader,
+        scssModulesLoader,
+        scssLoader,
+        cssModulesLoader,
+        cssLoader,
+        tsLoader,
+    ];
 };
