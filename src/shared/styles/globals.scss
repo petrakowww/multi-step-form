@@ -1,0 +1,13 @@
+@use './reset/reset';
+@use './variables/variables';
+@use './fonts/fonts.scss';
+
+html {
+    font-size: var(--font-size-root);
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: var(--font-regular);
+    min-width: var(--layout-mobile);
+}

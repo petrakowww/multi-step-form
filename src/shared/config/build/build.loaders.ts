@@ -22,20 +22,10 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions["rules"] => {
         use: [
             {
                 loader: "@svgr/webpack",
-                options: {
-                    icon: true,
-                    svgoConfig: {
-                        plugins: {
-                            name: "convertColors",
-                            params: {
-                                currentColor: true,
-                            },
-                        },
-                    },
-                },
             },
         ],
     };
+    
 
     const cssLoaderWithModules = {
         loader: "css-loader",
@@ -56,7 +46,7 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions["rules"] => {
     };
 
     const scssModulesLoader = {
-        test: /\.module\.s[ac]ss$/i, // для файлов с .module.scss
+        test: /\.module\.s[ac]ss$/i,
         use: [
             isDev ? "style-loader" : MiniCssExtractPlugin.loader,
             cssLoaderWithModules,

@@ -13,7 +13,7 @@
         "paths": {
             "@styles/*": ["src/shared/styles/*"],
             "@config/*": ["./src/shared/config/*"],
-            "@/*": ["src"]
+            "@/*": ["src/*"]
         },
         "plugins": [{ "name": "typescript-plugin-css-modules" }]
     },

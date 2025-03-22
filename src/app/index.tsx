@@ -1,6 +1,11 @@
-import '@styles/globals.css';
-import * as classes from './index.module.scss';
+import '@styles/globals.scss';
+import { Layout } from './layout';
+import { MultiStepForm } from '@/pages/multi-step-form/page';
 
 export const App = () => {
-    return <div className={classes.container}>Hello world! Hel My</div>;
+    return (
+        <Layout>
+            <MultiStepForm />
+        </Layout>
+    );
 };
