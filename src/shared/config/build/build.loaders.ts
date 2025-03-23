@@ -19,9 +19,13 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions["rules"] => {
 
     const svgLoader = {
         test: /\.svg$/,
-        use: [
+        oneOf: [
             {
-                loader: "@svgr/webpack",
+                issuer: /\.[jt]sx?$/,
+                use: ["@svgr/webpack"],
+            },
+            {
+                type: "asset/resource",
             },
         ],
     };

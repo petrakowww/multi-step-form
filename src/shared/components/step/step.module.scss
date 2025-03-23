@@ -1,0 +1,42 @@
+@use '@styles/media/media' as *;
+
+.step {
+    display: flex;
+    color: var(--muted);
+    align-items: center;
+    gap: 1.25rem;
+
+    &__display {
+        border-radius: 50%;
+        border: 2px solid;
+        aspect-ratio: 1;
+        width: 2.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 0.45rem;
+        justify-content: center;
+
+        &--preview {
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 0.75rem;
+            color: var(--border-foreground);
+        }
+
+        &--title {
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        @include breakpoint-down('md') {
+            display: none;
+        }
+    }
+}

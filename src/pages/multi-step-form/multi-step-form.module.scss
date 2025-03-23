@@ -1,0 +1,10 @@
+.multi-step-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    &__content {
+        grid-column: 2 / 4;
+        justify-self: center;
+        padding: 2rem;
+    }
+}
