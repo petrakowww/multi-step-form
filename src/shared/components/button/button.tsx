@@ -4,12 +4,12 @@ import classNames from 'classnames';
 type ButtonVariant = 'step' | 'primary' | 'ghost';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant: ButtonVariant;
+    variant?: ButtonVariant;
     children: React.ReactNode;
 }
 
 export const Button = (props: ButtonProps) => {
-    const { variant, children, ...prop } = props;
+    const { variant = 'primary', children, ...prop } = props;
 
     const buttonVariant = (variant: ButtonVariant) => {
         return classNames(classes.button, classes[`button--${variant}`]);

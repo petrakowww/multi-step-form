@@ -1,7 +1,11 @@
 import '@styles/globals.scss';
-import { Layout } from './layout';
 import { MultiStepForm } from '@/pages/multi-step-form/multi-step-form.page';
+import { StepContextProvider } from './providers/step-provider';
 
 export const App = () => {
-    return <MultiStepForm />;
+    return (
+        <StepContextProvider>
+            <MultiStepForm />
+        </StepContextProvider>
+    );
 };

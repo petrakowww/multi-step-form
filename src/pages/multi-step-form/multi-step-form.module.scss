@@ -1,10 +1,23 @@
 .multi-step-form {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    height: 100%;
 
     &__content {
         grid-column: 2 / 4;
         justify-self: center;
-        padding: 2rem;
+        width: 100%;
+        height: 100%;
+        align-self: stretch;
+        display: flex;
+        height: 100%;
+    }
+
+    &__main {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
     }
 }
