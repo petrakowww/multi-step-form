@@ -12,8 +12,9 @@
         "baseUrl": "./",
         "paths": {
             "@styles/*": ["src/shared/styles/*"],
-            "@config/*": ["./src/shared/config/*"],
-            "@/*": ["src"]
+            "@config/*": ["src/shared/config/*"],
+            "@assets/*": ["src/shared/assets/*"],
+            "@/*": ["src/*"]
         },
         "plugins": [{ "name": "typescript-plugin-css-modules" }]
     },

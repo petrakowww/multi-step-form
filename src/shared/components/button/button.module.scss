@@ -1,0 +1,33 @@
+.button {
+    padding: 0.875rem 1.425rem;
+    border: none;
+    cursor: pointer;
+    color: var(--background);
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.125s;
+    animation: linear;
+
+    &--primary,
+    &--accent {
+        background-color: var(--primary);
+        border-radius: 0.5rem;
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+    &--ghost {
+        background-color: var(--background);
+        color: var(--border);
+        &:hover {
+            color: var(--primary);
+        }
+    }
+    &--accent {
+        background-color: var(--accent);
+    }
+}

@@ -1,0 +1,32 @@
+@use '@styles/media/media' as *;
+
+.fallback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    flex-grow: 1;
+    min-height: 350px;
+
+    &__bg-skeleton {
+        height: 25%;
+    }
+
+    &__md-skeleton {
+        height: 10%;
+        width: 90%;
+    }
+
+    &__loading {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        color: var(--primary)
+    }
+
+    @include breakpoint-down('md') {
+        min-height: 100%;
+    }
+}

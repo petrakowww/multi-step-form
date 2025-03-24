@@ -1,0 +1,22 @@
+:root {
+    --primary: hsl(213, 96%, 18%);
+    --destructive: hsl(354, 84%, 57%);
+    --accent: hsl(243, 100%, 62%);
+    --secondary: hsl(228, 100%, 84%);
+    --tertiary: hsl(206, 94%, 87%);
+
+    --background: hsl(0, 0%, 100%);
+    --border: hsl(231, 11%, 63%);
+    --border-foreground: hsl(229, 24%, 87%);
+    --muted: hsl(217, 100%, 97%);
+    --muted-foreground: hsl(231, 100%, 99%);
+
+    --font-size-root: 16px;
+
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-bold: 700;
+
+    --layout-mobile: 375px;
+    --layout-desktop: 1440px;
+}

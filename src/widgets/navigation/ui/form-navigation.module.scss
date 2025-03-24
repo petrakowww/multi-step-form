@@ -1,0 +1,9 @@
+.form-navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &--right {
+        margin-left: auto;
+    }
+}

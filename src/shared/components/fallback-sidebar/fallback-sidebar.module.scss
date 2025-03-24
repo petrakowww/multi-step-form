@@ -1,0 +1,17 @@
+@use '@styles/media/media' as *;
+
+.sidebar {
+    &--fallback {
+        width: 100%;
+        height: 100%;
+
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-image: url('@assets/images/bg-sidebar-desktop.svg');
+        border-radius: 0.5rem;
+        @include breakpoint-down('md') {
+            background-image: url('@assets/images/bg-sidebar-mobile.svg');
+        }
+    }
+}

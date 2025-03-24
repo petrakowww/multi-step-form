@@ -1,0 +1,22 @@
+.personal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-transform: capitalize;
+    }
+
+    &__label {
+        flex: 1;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
