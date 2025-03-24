@@ -36,7 +36,7 @@ export const StepContextProvider = ({
     );
 };
 
-export const useFormContext = () => {
+export const useStepContext = () => {
     const context = React.useContext(StepContext);
 
     if (!context) {

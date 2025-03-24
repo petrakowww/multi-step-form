@@ -8,12 +8,20 @@
 
     &__display {
         border-radius: 50%;
-        border: 2px solid;
+        border: 1px solid;
         aspect-ratio: 1;
-        width: 2.25rem;
+        min-width: 2rem;
+        max-width: 2rem;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-weight: 500;
+
+        &--current {
+            background-color: var(--tertiary);
+            border-color: var(--border);
+            color: var(--primary);
+        }
     }
 
     &__card {
@@ -33,6 +41,8 @@
         &--title {
             text-transform: uppercase;
             font-weight: 500;
+            font-size: 0.875rem;
+            white-space: nowrap;
         }
 
         @include breakpoint-down('md') {

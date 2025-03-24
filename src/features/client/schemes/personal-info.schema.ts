@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const personalInfoScheme = z.object({
+export const personalInfoSchema = z.object({
     name: z.string().min(2, 'The name must contain at least 2 characters.'),
     email: z.string().email('This field must contain your email address.'),
     phone: z
@@ -10,3 +10,5 @@ export const personalInfoScheme = z.object({
             'Phone must be in format: +1 234 567 890',
         ),
 });
+
+export type PersonalInfoValues = z.infer<typeof personalInfoSchema>;

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const selectPlanScheme = z.object({
+export const selectPlanSchema = z.object({
     type: z
         .enum(['Arcade', 'Advanced', 'Pro'], {
             message:
@@ -13,3 +13,5 @@ export const selectPlanScheme = z.object({
         })
         .default('Monthly'),
 });
+
+export type SelectPlanValues = z.infer<typeof selectPlanSchema>;

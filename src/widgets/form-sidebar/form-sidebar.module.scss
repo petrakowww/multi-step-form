@@ -4,12 +4,10 @@
     display: flex;
     gap: clamp(0.25rem, 4vw, 2rem);
     padding: 2rem;
+    flex-direction: column;
+    margin-right: 2rem;
 
     @include breakpoint-down('md') {
         justify-content: center;
-    }
-
-    @include breakpoint-up('md') {
-        flex-direction: column;
     }
 }

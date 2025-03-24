@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 
 const PersonalInfoStep = lazy(() =>
-    import('../ui/parts/personal-info-step.form').then((module) => ({
+    import('../ui/parts/personal/personal-info-step.form').then((module) => ({
         default: module.PersonalInfoStep,
     })),
 );

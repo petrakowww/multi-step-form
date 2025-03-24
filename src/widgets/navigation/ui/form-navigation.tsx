@@ -8,19 +8,18 @@ export const FormNavigation = () => {
 
     return (
         <div className={classes['form-navigation']}>
-            <Button
-                variant="ghost"
-                onClick={prevPage}
-                disabled={pageIndex === 0}
-            >
-                go back
-            </Button>
-            <Button
-                onClick={nextPage}
-                disabled={pageIndex === maxCountPages - 1}
-            >
-                next step
-            </Button>
+            {pageIndex > 0 && (
+                <Button variant="ghost" onClick={prevPage}>
+                    go back
+                </Button>
+            )}
+            <div className={classes['form-navigation--right']}>
+                {pageIndex !== maxCountPages - 1 ? (
+                    <Button onClick={nextPage}>next step</Button>
+                ) : (
+                    <Button variant="accent">confirm</Button>
+                )}
+            </div>
         </div>
     );
 };

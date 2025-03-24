@@ -1,7 +1,7 @@
 import * as classes from './button.module.scss';
 import classNames from 'classnames';
 
-type ButtonVariant = 'step' | 'primary' | 'ghost';
+type ButtonVariant = 'primary' | 'ghost' | 'accent';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ButtonVariant;

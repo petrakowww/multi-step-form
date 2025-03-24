@@ -1,8 +1,8 @@
-import { useFormContext } from '@/app/providers/step-provider';
+import { useStepContext } from '@/app/providers/step-provider';
 import { useCallback } from 'react';
 
 export const useFormNavigation = (callback?: (value: number) => void) => {
-    const { setPageIndex, maxCountPages, pageIndex } = useFormContext();
+    const { setPageIndex, maxCountPages, pageIndex } = useStepContext();
 
     const prevPage = useCallback(() => {
         setPageIndex((prev) => {

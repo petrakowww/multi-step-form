@@ -9,9 +9,3 @@ $breakpoints: (
         @content;
     }
 }
-
-@mixin breakpoint-up($size-name) {
-    @media screen and (min-width: map.get($breakpoints, $size-name)) {
-        @content;
-    }
-}
