@@ -1,15 +1,9 @@
 import classNames from 'classnames';
 import * as classes from './input.module.scss';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    children?: React.ReactNode;
-}
+type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = (props: InputProps) => {
-    const { children, className, ...prop } = props;
-    return (
-        <input className={classNames(classes.input, className)} {...prop}>
-            {children}
-        </input>
-    );
+    const { className, ...prop } = props;
+    return <input className={classNames(classes.input, className)} {...prop} />;
 };
