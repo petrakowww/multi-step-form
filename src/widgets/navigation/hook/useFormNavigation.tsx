@@ -12,7 +12,7 @@ export const useFormNavigation = (callback?: (value: number) => void) => {
         });
     }, [setPageIndex]);
 
-    const nextPage = useCallback(() => {
+    const nextPage = useCallback(async () => {
         setPageIndex((prev) => {
             const newIndex = Math.min(prev + 1, maxCountPages - 1);
             callback?.(newIndex);

@@ -10,13 +10,14 @@ export const MultiFormContextProvider = ({
     const methods = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            personalInfoSchema: { name: '', email: '', phone: '' },
-            selectPlanSchema: { type: 'Arcade', payPlan: 'Monthly' },
-            pickAddonsSchema: {
-                onlineService: false,
-                largeStorage: false,
-                customizableProfile: false,
-            },
+            name: '',
+            email: '',
+            phone: '',
+            type: 'Arcade',
+            payPlan: 'Monthly',
+            onlineService: false,
+            largeStorage: false,
+            customizableProfile: false,
         },
     });
 
