@@ -3,36 +3,61 @@ import * as classes from './personal-info-form.module.scss';
 import { Input } from '@/shared/components/input/input';
 import { Label } from '@/shared/components/label/label';
 import { useFormContext } from 'react-hook-form';
+import { ErrorMessage } from '@/shared/components/error-message/error-message';
 
 export const PersonalInfoStep = () => {
     const {
         register,
         formState: { errors },
     } = useFormContext<PersonalInfoValues>();
-    console.log(errors);
+
     return (
         <div className={classes['personal-info']}>
-            <Label className={classes['personal-info__field']}>
-                name
+            <div className={classes['personal-info__field']}>
+                <div className={classes['personal-info__header']}>
+                    <Label className={classes['personal-info__label']}>
+                        Name
+                    </Label>
+                    <ErrorMessage
+                        message={errors.name?.message}
+                        error={errors.name}
+                    />
+                </div>
+
                 <Input {...register('name')} placeholder="e.g. Stephen King" />
-                {errors.name && <p>{errors.name.message}</p>}
-            </Label>
-            <Label className={classes['personal-info__field']}>
-                email address
+            </div>
+            <div className={classes['personal-info__field']}>
+                <div className={classes['personal-info__header']}>
+                    <Label className={classes['personal-info__label']}>
+                        Email Address
+                    </Label>
+                    <ErrorMessage
+                        message={errors.email?.message}
+                        error={errors.email}
+                    />
+                </div>
+
                 <Input
                     {...register('email')}
                     placeholder="e.g. stephenking@lorem.com"
                 />
-                {errors.email && <p>{errors.email.message}</p>}
-            </Label>
-            <Label className={classes['personal-info__field']}>
-                phone number
+            </div>
+            <div className={classes['personal-info__field']}>
+                <div className={classes['personal-info__header']}>
+                    <Label className={classes['personal-info__label']}>
+                        Phone Number
+                    </Label>
+                    <ErrorMessage
+                        message={errors.phone?.message}
+                        error={errors.phone}
+                    />
+                </div>
+
                 <Input
                     {...register('phone')}
                     placeholder="e.g. +1 234 567 890"
                 />
-                {errors.phone && <p>{errors.phone.message}</p>}
-            </Label>
+            </div>
         </div>
     );
 };
